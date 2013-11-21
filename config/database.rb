@@ -23,14 +23,16 @@ ActiveRecord::Base.configurations[:development] = {
 
 }
 
+# production at Heroku
+postgres = URI.parse(ENV['DATABASE_URL'] || '')
+
 ActiveRecord::Base.configurations[:production] = {
   :adapter   => 'postgresql',
-  :database  => 'clearhaus_production',
-  :username  => 'root',
-  :password  => '',
-  :host      => 'localhost',
-  :port      => 5432
-
+  :encoding  => 'utf8',
+  :database  => postgres.path[1..-1],
+  :username  => postgres.user,
+  :password  => postgres.password,
+  :host      => postgres.host
 }
 
 ActiveRecord::Base.configurations[:test] = {
