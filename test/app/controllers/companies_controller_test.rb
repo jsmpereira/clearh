@@ -17,18 +17,18 @@ describe "CompaniesController" do
   describe "#create" do
 
   	it "should return 201 Created for valid Company" do
-  		post '/companies/create', company: @company.attributes
+  		post '/companies', company: @company.attributes
   		assert_equal last_response.status, 201
   	end
 
   	it "should return the created Company" do
-  		post '/companies/create', company: @company.attributes
+  		post '/companies', company: @company.attributes
   		assert_equal last_response.body, @company.to_json
   	end
 
   	it "should return 400 Bad request for invalid Company" do
   		@company.name = ''
-  		post '/companies/create', company: @company.attributes
+  		post '/companies', company: @company.attributes
 
   		assert_equal last_response.status, 400
   	end
@@ -36,7 +36,7 @@ describe "CompaniesController" do
 
   describe "#show" do
   	it "should return the Company" do
-  		get "/companies/show/#{@existing_company.id}"
+  		get "/companies/#{@existing_company.id}"
   		assert_equal last_response.body, @existing_company.to_json
   	end
   end
@@ -44,7 +44,7 @@ describe "CompaniesController" do
   describe "#update" do
   	it "should update the Company and return it" do
   		@existing_company.name = 'Acme Inc'
-  		post "/companies/update/#{@existing_company.id}", company: @existing_company.attributes
+  		put "/companies/#{@existing_company.id}", company: @existing_company.attributes
   		assert_equal JSON.parse(last_response.body)['name'], 'Acme Inc'
   	end
   end
