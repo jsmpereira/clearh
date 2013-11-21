@@ -1,5 +1,7 @@
 PADRINO_ENV = 'test' unless defined?(PADRINO_ENV)
 require File.expand_path('../../config/boot', __FILE__)
+require 'mocha/setup'
+require 'minitest/pride'
 
 class MiniTest::Unit::TestCase
   include Mocha::API

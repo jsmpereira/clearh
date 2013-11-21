@@ -22,9 +22,15 @@ gem 'activerecord', '>= 3.1', :require => 'active_record'
 gem 'pg'
 
 # Test requirements
-gem 'mocha', :group => 'test', :require => false
-gem 'minitest', '~>2.6.0', :require => 'minitest/autorun', :group => 'test'
-gem 'rack-test', :require => 'rack/test', :group => 'test'
+
+group :test do
+	gem 'mocha', :require => false
+	gem 'minitest', '~>2.6.0', :require => 'minitest/autorun'
+	gem 'rack-test', :require => 'rack/test'
+	gem 'guard'
+	gem 'guard-minitest'
+	gem 'launchy'
+end
 
 # Padrino Stable Gem
 gem 'padrino', '0.11.4'
