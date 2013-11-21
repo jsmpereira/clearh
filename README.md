@@ -1,3 +1,8 @@
+## Heroku
+	http://limitless-tundra-1502.herokuapp.com
+	# Test
+	http://limitless-tundra-1502.herokuapp.com/companies/1
+
 ### #index
 	curl -i http://localhost:3000/companies
 
