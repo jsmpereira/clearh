@@ -1,0 +1,9 @@
+---
+:orm: activerecord
+:test: minitest
+:mock: mocha
+:script: jquery
+:renderer: slim
+:stylesheet: less
+:namespace: Clearhaus
+:migration_format: number
