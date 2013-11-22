@@ -9,6 +9,6 @@ class Company < ActiveRecord::Base
 	validates_format_of :phone_number, :with => /^9\d{8}$/i, allow_blank: true
 
 	def as_json(options={})
-		super(:except => [:id, :created_at, :updated_at])
+		super(:except => [:created_at, :updated_at])
 	end
 end

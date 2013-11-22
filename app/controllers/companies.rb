@@ -1,5 +1,15 @@
 Clearhaus::App.controllers :companies, provides: :json do
 
+  before do
+    headers 'Access-Control-Allow-Origin' => '*', 
+            'Access-Control-Allow-Methods' => ['OPTIONS', 'GET', 'POST', 'PUT'],
+            'Access-Control-Allow-Headers' => 'Content-Type'
+  end
+
+  options '/companies' do
+    200
+  end
+
   get :index do
     @companies = Company.all.to_json
   end
@@ -10,7 +20,7 @@ Clearhaus::App.controllers :companies, provides: :json do
     if @company.save
       halt 201, @company.to_json
     else
-      halt 400, @company.errors.messages.to_json
+      halt 400, { status: 400, body: @company.errors.messages }.to_json
     end
   end
 
