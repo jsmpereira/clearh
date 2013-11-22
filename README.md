@@ -2,6 +2,9 @@
 	http://limitless-tundra-1502.herokuapp.com
 	# Test
 	http://limitless-tundra-1502.herokuapp.com/companies/1
+	# AngularJS client
+	https://github.com/jsmpereira/clearh-ajs
+	http://gentle-brushlands-9342.herokuapp.com/
 
 ### #index
 	curl -i http://localhost:3000/companies
