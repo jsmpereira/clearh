@@ -1,4 +1,6 @@
 class Company < ActiveRecord::Base
+
+	has_paper_trail
 	
 	has_many :occupations
 	has_many :directors, through: :occupations, source: :person, conditions: ['occupations.title = ?', 'Director']

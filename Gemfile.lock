@@ -81,6 +81,9 @@ GEM
     padrino-mailer (0.11.4)
       mail (~> 2.5.3)
       padrino-core (= 0.11.4)
+    paper_trail (3.0.0.rc2)
+      activerecord (>= 3.0, < 5.0)
+      activesupport (>= 3.0, < 5.0)
     pg (0.17.0)
     polyglot (0.3.3)
     pry (0.9.12.3)
@@ -135,6 +138,7 @@ DEPENDENCIES
   minitest (~> 2.6.0)
   mocha
   padrino (= 0.11.4)
+  paper_trail (>= 3.0.0.rc2)
   pg
   rack-less
   rack-test

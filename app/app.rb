@@ -6,6 +6,8 @@ module Clearhaus
     register Padrino::Mailer
     register Padrino::Helpers
 
+    register PaperTrail::Sinatra
+
     enable :sessions
 
     ##

@@ -37,6 +37,9 @@ end
 # Padrino Stable Gem
 gem 'padrino', '0.11.4'
 
+# Model versioning
+gem 'paper_trail', '>= 3.0.0.rc2'
+
 # Or Padrino Edge
 # gem 'padrino', :github => 'padrino/padrino-framework'
 
