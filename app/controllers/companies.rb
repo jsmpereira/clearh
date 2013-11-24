@@ -6,6 +6,10 @@ Clearhaus::App.controllers :companies, provides: :json do
             'Access-Control-Allow-Headers' => 'Content-Type'
   end
 
+  before(:show, :update, :versions) do
+    load_company
+  end
+
   options '/companies' do
     200
   end
@@ -25,17 +29,19 @@ Clearhaus::App.controllers :companies, provides: :json do
   end
 
   get :show, map: '/companies/:id' do
-    @company = Company.find(params[:id]).to_json
+    @company.to_json
   end
 
   put :update, map: '/companies/:id' do
-    @company = Company.find(params[:id])
-
     if @company.update_attributes(params[:company])
       halt 201, @company.to_json
     else
       halt 400, @company.errors.messages.to_json
     end
+  end
+
+  get :versions, map: '/companies/:id/versions' do
+    versions = @company.versions.to_json
   end
 
   get :passports, map: '/companies/:id/passports/:passport_id' do
@@ -60,3 +66,13 @@ Clearhaus::App.controllers :companies, provides: :json do
     end
   end
 end
+
+private 
+
+  def load_company
+    begin
+      @company = Company.find(params[:id])
+    rescue ActiveRecord::RecordNotFound => e
+      halt 404, 'RecordNotFound'
+    end
+  end
